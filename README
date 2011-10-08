@@ -54,3 +54,7 @@
 				Console.WriteLine ("\tAddress: {0}", addr);
 		}
 
+
+	Mono.Dns is integrated in Mono's System.dll and can be enabled by
+	setting the environment variable MONO_DNS.
+
