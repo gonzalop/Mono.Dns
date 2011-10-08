@@ -1,1 +1,56 @@
-I need a README
+	Mono.Dns
+	=========
+
+	Mono.Dns provides a fully managed implementation of a simple DNS
+	resolver library. The reason for its existence is that, to avoid
+	more dependencies, the implementation of the System.Net.Dns
+	class in Mono relies on a set of libc functions that are not
+	designed to be used asynchrnously.
+
+
+	How do you use the SimpleResolver class? The interface is similar to
+	the System.Net.Sockets.Socket::*Async() methods. There are only
+	two entry points:
+
+		-GetHostAddressesAsync ()
+		-GetHostEntryAsync ().
+	
+	An example of using GetHostEntryAsync () follows:
+
+		using System;
+		using System.Net;
+		using Mono.Dns;
+		...
+			SimpleResolver r = new SimpleResolver ();
+			SimpleResolverEventArgs e = new SimpleResolverEventArgs ();
+			e.Completed += OnCompleted;
+			e.HostName = s;
+			if (!r.GetHostEntryAsync (e)) // Resolved synchronously
+				OnCompleted (e, e);
+			Console.ReadLine ();
+		...
+
+		static void OnCompleted (object sender, SimpleResolverEventArgs e)
+		{
+			IPHostEntry entry = e.HostEntry;
+			if (entry == null) {
+				Console.WriteLine ("HostName: {0} Error: {1} {2}",
+						e.HostName, e.ResolverError, e.ErrorMessage);
+				return;
+			}
+
+			if (e.ResolverError != 0)
+				Console.WriteLine ("HostName: {0} {1}", e.HostName, e.ResolverError);
+			else
+				Console.WriteLine ("HostName: {0}", e.HostName);
+
+			if (entry.HostName != null)
+				Console.WriteLine ("\tHostName: {0}", entry.HostName);
+
+			foreach (string alias in entry.Aliases)
+				Console.WriteLine ("\tAlias: {0}", alias);
+
+			foreach (IPAddress addr in entry.AddressList)
+				Console.WriteLine ("\tAddress: {0}", addr);
+		}
+
