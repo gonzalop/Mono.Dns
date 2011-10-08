@@ -27,9 +27,9 @@ using System.Net.Sockets;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;
-using Mono.Dns;
+using Mono.Net.Dns;
 
-namespace Mono.Dns {
+namespace Mono.Net.Dns {
 	static class ResolverTest {
 		static int counter;
 		static ManualResetEvent exit_event = new ManualResetEvent (false);

@@ -1,5 +1,5 @@
 //
-// Mono.Dns.DnsResourceRecordA
+// Mono.Net.Dns.DnsQuestion
 //
 // Authors:
 //	Gonzalo Paniagua Javier (gonzalo.mono@gmail.com)
@@ -20,17 +20,43 @@
 //
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Text;
 
-namespace Mono.Dns {
+namespace Mono.Net.Dns {
 #if !NET_2_0
 	public
 #endif
-	class DnsResourceRecordA : DnsResourceRecordIPAddress {
-		internal DnsResourceRecordA (DnsResourceRecord rr)
-			: base (rr, 4)
+	class DnsQuestion {
+		string name;
+		DnsQType type;
+		DnsQClass _class;
+
+		internal DnsQuestion ()
 		{
+		}
+
+		internal int Init (DnsPacket packet, int offset)
+		{
+			name = packet.ReadName (ref offset);
+			type = (DnsQType) packet.ReadUInt16 (ref offset);
+			_class = (DnsQClass) packet.ReadUInt16 (ref offset);
+			return offset;
+		}
+
+		public string Name {
+			get { return name; }
+		}
+
+		public DnsQType Type {
+			get { return type; }
+		}
+
+		public DnsQClass Class {
+			get { return _class; }
+		}
+
+		public override string ToString() {
+			return String.Format("Name: {0} Type: {1} Class: {2}", Name, Type, Class);
 		}
 	}
 }

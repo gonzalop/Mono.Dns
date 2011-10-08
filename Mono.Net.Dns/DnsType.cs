@@ -1,5 +1,5 @@
 //
-// Mono.Dns.DnsType
+// Mono.Net.Dns.DnsType
 //
 // Authors:
 //	Gonzalo Paniagua Javier (gonzalo.mono@gmail.com)
@@ -19,7 +19,7 @@
 // limitations under the License.
 //
 using System;
-namespace Mono.Dns {
+namespace Mono.Net.Dns {
 #if !NET_2_0
 	public
 #endif

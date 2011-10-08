@@ -1,5 +1,5 @@
 //
-// Mono.Dns.DnsUtil
+// Mono.Net.Dns.DnsUtil
 //
 // Authors:
 //	Gonzalo Paniagua Javier (gonzalo.mono@gmail.com)
@@ -22,7 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mono.Dns {
+namespace Mono.Net.Dns {
 #if !NET_2_0
 	public
 #endif

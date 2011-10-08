@@ -1,5 +1,5 @@
 //
-// Mono.Dns.DnsResourceRecordIPAddress
+// Mono.Net.Dns.ResolverAsyncOperation
 //
 // Authors:
 //	Gonzalo Paniagua Javier (gonzalo.mono@gmail.com)
@@ -18,35 +18,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
-
-namespace Mono.Dns {
+namespace Mono.Net.Dns {
 #if !NET_2_0
 	public
 #endif
-	abstract class DnsResourceRecordIPAddress : DnsResourceRecord {
-		IPAddress address;
-
-		internal DnsResourceRecordIPAddress (DnsResourceRecord rr, int address_size)
-		{
-			CopyFrom (rr);
-			ArraySegment<byte> segment = rr.Data;
-			byte [] bytes = new byte [address_size];
-			Buffer.BlockCopy (segment.Array, segment.Offset, bytes, 0, address_size);
-			address = new IPAddress (bytes);
-		}
-
-		public override string ToString ()
-		{
-			return base.ToString() + " Address: " + address;
-		}
-
-		public IPAddress Address {
-			get { return address; }
-		}
+	enum ResolverAsyncOperation {
+		None,
+		GetHostEntry,
+		GetHostAddresses,
 	}
 }
 

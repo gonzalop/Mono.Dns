@@ -1,5 +1,5 @@
 //
-// Mono.Dns.DnsClass
+// Mono.Net.Dns.DnsResourceRecordCName
 //
 // Authors:
 //	Gonzalo Paniagua Javier (gonzalo.mono@gmail.com)
@@ -18,19 +18,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-namespace Mono.Dns {
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Mono.Net.Dns {
 #if !NET_2_0
 	public
 #endif
-	enum DnsClass : ushort {
-		Internet = 1,
-		IN = 1,
-		CSNET = 2,
-		CS = 2,
-		CHAOS = 3,
-		CH = 3,
-		Hesiod = 4,
-		HS = 4,
+	class DnsResourceRecordCName : DnsResourceRecord {
+		string cname;
+
+		internal DnsResourceRecordCName (DnsResourceRecord rr)
+		{
+			CopyFrom (rr);
+			int offset = rr.Data.Offset;
+			cname = DnsPacket.ReadName (rr.Data.Array, ref offset);
+		}
+
+		public string CName {
+			get { return cname; }
+		}
+
+		public override string ToString ()
+		{
+			return base.ToString () + " CNAME: " + cname.ToString ();
+		}
 	}
 }
-

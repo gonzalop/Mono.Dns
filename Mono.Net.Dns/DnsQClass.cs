@@ -1,5 +1,5 @@
 //
-// Mono.Dns.DnsResourceRecordAAAA
+// Mono.Net.Dns.DnsQClass
 //
 // Authors:
 //	Gonzalo Paniagua Javier (gonzalo.mono@gmail.com)
@@ -18,20 +18,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
-
-namespace Mono.Dns {
+namespace Mono.Net.Dns {
 #if !NET_2_0
 	public
 #endif
-	class DnsResourceRecordAAAA : DnsResourceRecordIPAddress {
-		internal DnsResourceRecordAAAA (DnsResourceRecord rr)
-			: base (rr, 16)
-		{
-		}
+	enum DnsQClass : ushort {
+		Internet = 1,
+		IN = 1,
+		CSNET = 2,
+		CS = 2,
+		CHAOS = 3,
+		CH = 3,
+		Hesiod = 4,
+		HS = 4,
+		None = 254,
+		Any = 255
 	}
 }
 

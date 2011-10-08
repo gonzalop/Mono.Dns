@@ -1,5 +1,5 @@
 //
-// Mono.Dns.DnsResponse
+// Mono.Net.Dns.DnsResponse
 //
 // Authors:
 //	Gonzalo Paniagua Javier (gonzalo.mono@gmail.com)
@@ -24,7 +24,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 
-namespace Mono.Dns {
+namespace Mono.Net.Dns {
 #if !NET_2_0
 	public
 #endif

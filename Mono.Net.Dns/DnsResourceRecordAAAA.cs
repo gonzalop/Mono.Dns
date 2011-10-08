@@ -1,5 +1,5 @@
 //
-// Mono.Dns.DnsQuery
+// Mono.Net.Dns.DnsResourceRecordAAAA
 //
 // Authors:
 //	Gonzalo Paniagua Javier (gonzalo.mono@gmail.com)
@@ -20,33 +20,17 @@
 //
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Net;
 using System.Text;
 
-namespace Mono.Dns {
+namespace Mono.Net.Dns {
 #if !NET_2_0
 	public
 #endif
-	class DnsQuery : DnsPacket {
-		public DnsQuery (string name, DnsQType qtype, DnsQClass qclass)
+	class DnsResourceRecordAAAA : DnsResourceRecordIPAddress {
+		internal DnsResourceRecordAAAA (DnsResourceRecord rr)
+			: base (rr, 16)
 		{
-			if (String.IsNullOrEmpty (name))
-				throw new ArgumentNullException ("name");
-
-			int length = DnsUtil.GetEncodedLength (name);
-			if (length == -1)
-				throw new ArgumentException ("Invalid DNS name", "name");
-
-			length += 12 + 2 + 2; // Header + qtype + qclass
-			packet = new byte [length];
-			header = new DnsHeader (packet, 0);
-			position = 12;
-			WriteDnsName (name);
-			WriteUInt16 ((ushort) qtype);
-			WriteUInt16 ((ushort) qclass);
-			Header.QuestionCount = 1;
-			Header.IsQuery = true;
-			Header.RecursionDesired = true;
 		}
 	}
 }

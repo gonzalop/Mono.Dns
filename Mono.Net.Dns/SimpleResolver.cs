@@ -1,5 +1,5 @@
 //
-// Mono.Dns.SimpleResolver
+// Mono.Net.Dns.SimpleResolver
 //
 // Authors:
 //	Gonzalo Paniagua Javier (gonzalo.mono@gmail.com)
@@ -28,7 +28,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;
 
-namespace Mono.Dns {
+namespace Mono.Net.Dns {
 #if !NET_2_0
 	public
 #endif

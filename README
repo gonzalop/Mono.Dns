@@ -19,7 +19,7 @@
 
 		using System;
 		using System.Net;
-		using Mono.Dns;
+		using Mono.Net.Dns;
 		...
 			SimpleResolver r = new SimpleResolver ();
 			SimpleResolverEventArgs e = new SimpleResolverEventArgs ();

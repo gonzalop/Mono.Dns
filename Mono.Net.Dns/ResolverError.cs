@@ -1,5 +1,4 @@
-//
-// Mono.Dns.DnsResourceRecordPTR
+// Mono.Net.Dns.ResolverError
 //
 // Authors:
 //	Gonzalo Paniagua Javier (gonzalo.mono@gmail.com)
@@ -18,30 +17,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Mono.Dns {
+namespace Mono.Net.Dns {
 #if !NET_2_0
 	public
 #endif
-	class DnsResourceRecordPTR : DnsResourceRecord {
-		string dname;
-
-		internal DnsResourceRecordPTR (DnsResourceRecord rr)
-		{
-			CopyFrom (rr);
-			int offset = rr.Data.Offset;
-			dname = DnsPacket.ReadName (rr.Data.Array, ref offset);
-		}
-
-		public string DName {
-			get { return dname; }
-		}
-
-		public override string ToString() {
-			return base.ToString () + " DNAME: " + dname.ToString ();
-		}
+	enum ResolverError {
+		NoError,		// From DNS server
+		FormatError,		//
+		ServerFailure,		//
+		NameError,		//
+		NotImplemented,		//
+		Refused,		//
+		// Resolver specific
+		ResponseHeaderError,
+		ResponseFormatError,
+		Timeout,
 	}
 }
+

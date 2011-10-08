@@ -1,28 +1,28 @@
 MCS=$(if $(V),,@echo "MCS	$@";) gmcs 
 RM_F=rm -f 
 SOURCES= \
-	Mono.Dns/DnsClass.cs \
-	Mono.Dns/DnsHeader.cs \
-	Mono.Dns/DnsOpCode.cs \
-	Mono.Dns/DnsPacket.cs \
-	Mono.Dns/DnsQClass.cs \
-	Mono.Dns/DnsQType.cs \
-	Mono.Dns/DnsQuery.cs \
-	Mono.Dns/DnsQuestion.cs \
-	Mono.Dns/DnsRCode.cs \
-	Mono.Dns/DnsResourceRecordA.cs \
-	Mono.Dns/DnsResourceRecordAAAA.cs \
-	Mono.Dns/DnsResourceRecordCName.cs \
-	Mono.Dns/DnsResourceRecordIPAddress.cs \
-	Mono.Dns/DnsResourceRecordPTR.cs \
-	Mono.Dns/DnsResourceRecord.cs \
-	Mono.Dns/DnsResponse.cs \
-	Mono.Dns/DnsType.cs \
-	Mono.Dns/DnsUtil.cs \
-	Mono.Dns/ResolverAsyncOperation.cs \
-	Mono.Dns/ResolverError.cs \
-	Mono.Dns/SimpleResolver.cs \
-	Mono.Dns/SimpleResolverEventArgs.cs
+	Mono.Net.Dns/DnsClass.cs \
+	Mono.Net.Dns/DnsHeader.cs \
+	Mono.Net.Dns/DnsOpCode.cs \
+	Mono.Net.Dns/DnsPacket.cs \
+	Mono.Net.Dns/DnsQClass.cs \
+	Mono.Net.Dns/DnsQType.cs \
+	Mono.Net.Dns/DnsQuery.cs \
+	Mono.Net.Dns/DnsQuestion.cs \
+	Mono.Net.Dns/DnsRCode.cs \
+	Mono.Net.Dns/DnsResourceRecordA.cs \
+	Mono.Net.Dns/DnsResourceRecordAAAA.cs \
+	Mono.Net.Dns/DnsResourceRecordCName.cs \
+	Mono.Net.Dns/DnsResourceRecordIPAddress.cs \
+	Mono.Net.Dns/DnsResourceRecordPTR.cs \
+	Mono.Net.Dns/DnsResourceRecord.cs \
+	Mono.Net.Dns/DnsResponse.cs \
+	Mono.Net.Dns/DnsType.cs \
+	Mono.Net.Dns/DnsUtil.cs \
+	Mono.Net.Dns/ResolverAsyncOperation.cs \
+	Mono.Net.Dns/ResolverError.cs \
+	Mono.Net.Dns/SimpleResolver.cs \
+	Mono.Net.Dns/SimpleResolverEventArgs.cs
 
 DLLS= Mono.Dns.dll
 EXES = resolver.exe \
